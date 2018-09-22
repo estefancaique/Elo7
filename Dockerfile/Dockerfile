@@ -1,6 +1,6 @@
 FROM centos:7
 
-MAINTAINER – Estefan Caique estefancaique@gmail.com
+MAINTAINER – Estefan Caique <estefancaique@gmail.com>
 
 RUN yum update -y
 
@@ -21,9 +21,9 @@ RUN yum -y install nodejs git npm; yum clean all
 
 RUN cd /opt/
 
-CMD ["/usr/bin/git" "clone" "https://github.com/estefancaique/Elo7.git" /opt/Elo7 ]
+CMD ["/usr/bin/git clone" "https://github.com/estefancaique/Elo7.git" /opt/Elo7]
 
-RUN npm install /opt/Elo7/
+CMD ["npm install /opt/Elo7/"]
 
 CMD [node /opt/Elo7/app.js]
 
