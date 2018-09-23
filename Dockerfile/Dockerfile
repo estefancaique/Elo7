@@ -1,4 +1,4 @@
-FROM centos:7
+FROM centos:centos7
 
 MAINTAINER Estefan Caique <estefancaique@gmail.com>
 
@@ -8,18 +8,14 @@ RUN echo -e "[mongodb]\nname=MongoDB Repository\nbaseurl=https://repo.mongodb.or
     yum install -y mongodb-org && \
     yum clean all && \
     chown -R mongod:mongod /var/lib/mongo
-
-VOLUME ["/var/lib/mongodb"]
-
-RUN yum install mongodb-org -y
-
-RUN mongod --config /etc/mongod.conf
+	
+VOLUME ["/var/log/mongodb"]
 
 EXPOSE 27017
 
 RUN yum -y install epel-release; yum clean all
 
-RUN yum -y install nodejs git npm; yum clean all
+RUN yum -y install nodejs npm; yum clean all
 
 RUN mkdir -p /opt/elo7/
 
@@ -27,6 +23,10 @@ COPY Elo7/ /opt/elo7/
 
 RUN cd opt/elo7 && npm install
 
-RUN cd opt/elo7 && node app.js
+COPY mongostar.sh /
+
+CMD "mongod --config /etc/mongod.conf"
+
+CMD "cd opt/elo7 && node app.js"
 
 EXPOSE 5001
