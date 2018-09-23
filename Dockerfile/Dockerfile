@@ -25,8 +25,4 @@ RUN cd opt/elo7 && npm install
 
 COPY mongostar.sh /
 
-CMD "mongod --config /etc/mongod.conf"
-
-CMD "cd opt/elo7 && node app.js"
-
 EXPOSE 5001
