@@ -1,6 +1,6 @@
 FROM centos:7
 
-MAINTAINER – Estefan Caique <estefancaique@gmail.com>
+MAINTAINER Estefan Caique <estefancaique@gmail.com>
 
 RUN yum update -y
 
@@ -13,18 +13,20 @@ VOLUME ["/var/lib/mongodb"]
 
 RUN yum install mongodb-org -y
 
-CMD ["/usr/bin/mongod", "--config", "/etc/mongodb.conf"]
+RUN mongod --config /etc/mongod.conf
+
+EXPOSE 27017
 
 RUN yum -y install epel-release; yum clean all
 
 RUN yum -y install nodejs git npm; yum clean all
 
-RUN cd /opt/
+RUN mkdir -p /opt/elo7/
 
-CMD ["/usr/bin/git clone" "https://github.com/estefancaique/Elo7.git" /opt/Elo7]
+COPY Elo7/ /opt/elo7/
 
-CMD ["npm install /opt/Elo7/"]
+RUN cd opt/elo7 && npm install
 
-CMD [node /opt/Elo7/app.js]
+RUN cd opt/elo7 && node app.js
 
 EXPOSE 5001
