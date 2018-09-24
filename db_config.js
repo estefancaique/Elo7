@@ -14,7 +14,7 @@ db.once('open', function() {
 		Versao: String,
 		Responsavel: String,
 		Status: String,
-		created_at: Date
+		Data: Date
 	});
 
 	exports.Deploy = mongoose.model('Deploy', userSchema);

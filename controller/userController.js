@@ -6,7 +6,7 @@ exports.list = function(callback){
 
 		if(error) {
 
-			callback({error: 'Não foi possivel retornar os usuarios'});
+			callback({error: 'Não foi possivel retornar os Deploy'});
 		} else {
 
 			callback(deploy);
@@ -20,7 +20,7 @@ exports.deploy = function(id, callback) {
 
 		if(error) {
 
-			callback({error: 'Não foi possivel retornar o usuario'});
+			callback({error: 'Não foi possivel retornar o Id do Deploy'});
 		} else {
 
 			callback(deploy);
@@ -36,12 +36,12 @@ exports.save = function(Componente, Versao, Responsavel, Status,  callback){
 		'Versao': Versao,
 		'Responsavel': Responsavel,
 		'Status': Status,
-		'created_at': new Date()
+		'Data': new Date()
 	}).save(function(error, deploy) {
 
 		if(error) {
 
-			callback({error: 'Não foi possivel salvar o usuario'});
+			callback({error: 'Não foi possivel gravar o Deploy'});
 		} else {
 
 			callback(deploy);
