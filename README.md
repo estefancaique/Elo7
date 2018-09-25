@@ -1,3 +1,6 @@
+# 1.	Pré-requisitos
+ - Para Aplicação funcionar e necessario instalar o MongoDB
+
 # 1.	OBJETIVO
 
 Esssa aplicação como funcionalidade registrar as receba uma requisição HTTP com os seguintes parâmetros listados abaixo:
