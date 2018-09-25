@@ -1,4 +1,4 @@
-# 1.	Pré-requisitos
+# 1.    PRÉ-REQUISITOS
  - Para Aplicação funcionar e necessario instalar o MongoDB
 
 # 1.	OBJETIVO
